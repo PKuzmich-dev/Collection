@@ -34,8 +34,10 @@ public class MyCollection<E> implements Collection<E> {
     @Override
     public final boolean contains(final Object o) {
         Iterator iterator = this.iterator();
+        Object obj;
         while (iterator.hasNext()) {
-            if (iterator.next().equals(o)) {
+            obj = iterator.next();
+            if ((obj == null && o == null) || (obj != null && obj.equals(o))) {
                 return true;
             }
         }
@@ -62,8 +64,10 @@ public class MyCollection<E> implements Collection<E> {
     @Override
     public final boolean remove(final Object o) {
         Iterator iterator = this.iterator();
+        Object obj;
         while (iterator.hasNext()) {
-            if (iterator.next().equals(o)) {
+            obj = iterator.next();
+            if ((obj == null && o == null) || (obj != null && obj.equals(o))) {
                 iterator.remove();
                 return true;
             }
@@ -93,7 +97,7 @@ public class MyCollection<E> implements Collection<E> {
     public final boolean removeAll(final Collection<?> c) {
         boolean result = false;
         for (Object el : c) {
-            if (this.remove(el)) {
+            while (this.remove(el)) {
                 result = true;
             }
         }

@@ -1,11 +1,32 @@
 import java.util.Arrays;
+import java.util.Iterator;
 
 
 public class Main {
 
     public static void main(final String[] args) {
         // write your code here
-        MyCollection<Integer> colInt = new MyCollection<>();
+        MyCollection<Integer> c = new MyCollection<>();
+
+        c.add(0);
+        c.add(2);
+        c.add(null);
+        c.add(5);
+        c.add(2);
+
+        Iterator<Integer> it = c.iterator();
+        String exception = null;
+        try {
+            it.remove();
+        } catch (Exception e) {
+            exception = e.getClass().getSimpleName();
+        }
+        //return exception;
+        System.out.println(exception);
+        System.out.println("Результат - " + Arrays.toString(c.toArray()));
+        /*System.out.println(colInt.contains(null));
+        System.out.println(colInt.contains(2));
+        /*
 
         for (int i = 0; i < 5; i++) {
             System.out.println("добавляем " + i + " - " + colInt.add(i));
@@ -15,7 +36,7 @@ public class Main {
         System.out.println("Удаляем 3 - " + colInt.remove(3));
         System.out.println("Удаляем 10 - " + colInt.remove(10));
 
-        MyCollection<Integer> colForDel = new MyCollection<>();
+        MyCollection<Integer> colForDel = new MyCollection<>(
         colForDel.add(2);
         colForDel.add(4);
         colForDel.add(10);
@@ -41,7 +62,7 @@ public class Main {
 
         System.out.println("Очищаем коллекцию");
         colInt.clear();
-        System.out.println("Результат - " + Arrays.toString(colInt.toArray()));
+        System.out.println("Результат - " + Arrays.toString(colInt.toArray()));*/
 
 
     }
